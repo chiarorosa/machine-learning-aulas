@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Dino RL — Aula 1</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <header>
+    <h1>DINO RL</h1>
+    <nav id="modos">
+      <button data-modo="humano" class="ativo">Humano</button>
+      <button data-modo="treinar">Treinar</button>
+      <button data-modo="assistir">Assistir</button>
+    </nav>
+    <nav id="velocidades">
+      <button data-vel="1" class="ativo" title="60 passos por segundo, o ritmo do jogo">Ritmo real</button>
+      <button data-vel="turbo" title="o mais rápido que a ponte permitir; continua rodando com a aba em segundo plano">Turbo</button>
+    </nav>
+    <span id="conexao" class="desligado">Python desconectado</span>
+  </header>
+
+  <p id="estadoMemoria" class="aviso">Humano: conecte o Python para guardar suas jogadas.</p>
+
+  <section id="destaque">
+    <h2>Dino em foco
+      <small>— alimenta o painel abaixo · use &larr; &rarr; para trocar de pista</small></h2>
+    <canvas id="telaDestaque"></canvas>
+  </section>
+
+  <section id="populacao">
+    <h2>A população <small>— 20 pistas, um cérebro só</small></h2>
+    <canvas id="telaPopulacao"></canvas>
+  </section>
+
+  <section id="painel">
+    <div id="entradas"></div>
+    <div class="cartao-rede">
+      <h3>A rede <small id="arquitetura">6 &rarr; 8 &rarr; 3</small></h3>
+      <canvas id="telaRede" width="480" height="330"></canvas>
+    </div>
+    <div id="saidas"></div>
+  </section>
+
+  <section id="metricas">
+    <h2>Partidas ao vivo <small>— no treino, incluem exploração</small></h2>
+    <div id="numeros"></div>
+    <canvas id="telaGrafico" width="1030" height="150"></canvas>
+  </section>
+
+  <section>
+    <h2>Avaliação sem exploração <small>— 20 sementes fixas, até 3.000 pontos por partida</small></h2>
+    <p id="avaliacao">Aguardando o modelo. A prova se repete a cada 25.000 experiências.</p>
+  </section>
+
+  <script src="aleatorio.js"></script>
+  <script src="motor.js"></script>
+  <script src="avaliacao.js"></script>
+  <script src="sprites.js"></script>
+  <script src="render.js"></script>
+  <script src="painel.js"></script>
+  <script src="ponte.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

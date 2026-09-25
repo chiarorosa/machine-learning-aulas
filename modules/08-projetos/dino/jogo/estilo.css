@@ -1,0 +1,62 @@
+:root {
+  --tinta: #535353;
+  --fundo: #f7f7f7;
+  --linha: #dcdcdc;
+  --destaque: #b56a00;
+  --apagado: #9a9a9a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 16px 20px 40px;
+  font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: var(--tinta);
+  background: var(--fundo);
+}
+
+header { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 16px; }
+header h1 { font-size: 17px; margin: 0 10px 0 0; letter-spacing: 2px; }
+
+nav { display: flex; }
+nav button {
+  font: inherit; padding: 5px 13px; cursor: pointer;
+  border: 1px solid var(--linha); background: #fff; color: var(--tinta);
+  margin-right: -1px;
+}
+nav button:hover { background: #f0f0f0; }
+nav button.ativo { background: var(--tinta); color: #fff; border-color: var(--tinta); }
+
+#conexao { margin-left: auto; padding: 4px 10px; border-radius: 3px; font-size: 12px; }
+#conexao.desligado { background: #fdecec; color: #b62324; }
+#conexao.ligado { background: #e8f6ec; color: #1a7f37; }
+
+section { margin-bottom: 18px; }
+section h2, #painel h3 {
+  font-size: 12px; font-weight: bold; margin: 0 0 6px;
+  text-transform: uppercase; letter-spacing: 1px;
+}
+section h2 small, #painel h3 small {
+  font-weight: normal; text-transform: none; letter-spacing: 0; color: var(--apagado);
+}
+
+canvas { background: #fff; border: 1px solid var(--linha); display: block; max-width: 100%; }
+
+#painel { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
+#entradas, #saidas { min-width: 240px; flex: 0 1 260px; }
+.cartao-rede { flex: 0 0 auto; }
+.aviso { color: var(--apagado); line-height: 1.7; margin: 10px 0 0; }
+
+.barra { margin-bottom: 9px; }
+.barra .rotulo { display: flex; justify-content: space-between; margin-bottom: 3px; }
+.barra .rotulo b { font-weight: bold; }
+.barra .trilho { height: 9px; background: #ececec; border: 1px solid var(--linha); }
+.barra .trilho.com-sinal { background: linear-gradient(to right, #ececec 49.5%, #aaa 49.5%, #aaa 50.5%, #ececec 50.5%); }
+.barra .preenchimento { height: 100%; background: var(--tinta); }
+.barra.escolhida .preenchimento { background: var(--destaque); }
+.barra.escolhida .rotulo { color: var(--destaque); font-weight: bold; }
+
+#numeros { display: flex; gap: 24px; margin-bottom: 8px; flex-wrap: wrap; }
+#numeros span { color: var(--apagado); }
+#numeros b { font-size: 15px; color: var(--tinta); }

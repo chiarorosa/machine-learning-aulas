@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Testes do motor</title>
+  <style>
+    body { font: 13px/1.6 ui-monospace, Consolas, monospace; padding: 20px; background: #f7f7f7; color: #333; }
+    h1 { font-size: 16px; margin: 0 0 4px; }
+    p.dica { color: #8a8a8a; margin: 0 0 14px; }
+    .ok { color: #1a7f37; }
+    .falha { color: #b62324; font-weight: bold; }
+    .resumo { margin-top: 12px; padding-top: 8px; border-top: 1px solid #ccc; font-weight: bold; font-size: 15px; }
+  </style>
+</head>
+<body>
+  <h1>Testes do motor</h1>
+  <p class="dica">Edite <code>motor.js</code> e recarregue — os arquivos são
+    buscados sem cache, então o que você vê é sempre o código atual.</p>
+  <div id="saida">carregando…</div>
+
+  <script src="testes.js"></script>
+  <script>
+    // Carrega os arquivos sob teste sem cache, na ordem, e so entao executa.
+    // Sem isto, um aluno que edita motor.js e recarrega pode continuar vendo
+    // o resultado do codigo antigo.
+    (async function () {
+      var versao = Date.now();
+      for (const arquivo of ["aleatorio.js", "motor.js", "casos.js"]) {
+        const codigo = await (await fetch(arquivo + "?v=" + versao,
+                                          { cache: "no-store" })).text();
+        (0, eval)(codigo);
+      }
+      window.RESULTADO = Testes.executar(document.getElementById("saida"));
+    })();
+  </script>
+</body>
+</html>
